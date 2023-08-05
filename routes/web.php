@@ -22,5 +22,6 @@ Route::get('/streamAudio', [StreamAudioController::class, 'streamAudio']);
 
 # 故事相關內容
 Route::prefix('story')->group(function () {
+    Route::get('/getAllStoryNameAndID', [StoryContentController::class, 'getAllStoryNameAndID']);
     Route::get('/getStoryDetail/{storyId}', [StoryContentController::class, 'getStoryDetail']);
 });

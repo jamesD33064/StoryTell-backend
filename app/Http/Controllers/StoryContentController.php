@@ -15,6 +15,10 @@ class StoryContentController extends Controller
         $this->storyContentService = new StoryContentService();
     }
 
+    public function getAllStoryNameAndID(){
+        return $this->storyContentService->getAllStoryNameAndID();
+    }
+
     public function getStoryDetail($storyId){
         return $this->storyContentService->getStoryContent($storyId);
     }

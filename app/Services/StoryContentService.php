@@ -13,6 +13,10 @@ class StoryContentService
         $this->storyContentRepository = new StoryContentRepository();
     }
 
+    public function getAllStoryNameAndID(){
+        return $this->storyContentRepository->getAllStoryNameAndID();
+    }
+
     public function getStoryContent($storyId){
         return $this->storyContentRepository->getStoryContent($storyId);
     }
