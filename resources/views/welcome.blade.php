@@ -18,16 +18,19 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
-        function getStoryDetail(){
+
+        // const url = '/story/getStoryDetail/64cdfb09d8e0e93498033222';
+        const url = '/story/getAllStoryNameAndID';
+        function post(){
             $.ajax({
-                url: '/story/getStoryDetail/64cdfb09d8e0e93498033222',
+                url: url,
                 method: 'GET',
                 success: function(data) {
 
                 }
             });
         }
-        getStoryDetail();
+        post();
 
         // function updateVideo(progress) {
         //     $.ajax({
