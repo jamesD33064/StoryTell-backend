@@ -13,7 +13,7 @@ class StoryContentRepository {
     }
 
     public function getAllStoryNameAndID(){
-        return $this->storyContent::All();
+        return $this->storyContent::select('_id', 'storyName')->get();
     }
 
     public function getStoryContent($storyId){
