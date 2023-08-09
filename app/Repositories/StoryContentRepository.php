@@ -12,8 +12,10 @@ class StoryContentRepository {
         $this->storyContent = new StoryContent();
     }
 
-    public function getAllStoryNameAndID(){
-        return $this->storyContent::select('_id', 'storyName')->get();
+    public function getAllStoryInfo(){
+        // return $this->storyContent::select('_id', 'storyName')->get();
+        $data = $this->storyContent::select('_id', 'storyName')->get();
+        return json_encode($data);
     }
 
     public function getStoryContent($storyId){

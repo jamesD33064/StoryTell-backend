@@ -20,7 +20,9 @@
     <script>
 
         // const url = '/story/getStoryDetail/64cdfb09d8e0e93498033222';
-        const url = '/story/getAllStoryNameAndID';
+        const url = "http://140.134.37.23:8000/story/getStoryDetail/64ce58ed2f6ef1ad74002243";
+        // const url = '/story/getAllStoryInfo';
+
         function post(){
             $.ajax({
                 url: url,
