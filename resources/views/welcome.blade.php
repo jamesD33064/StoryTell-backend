@@ -14,21 +14,24 @@
         <source src="/streamAudio?progress=0" type="audio/wav">
         Your browser does not support the video tag.
     </audio> --}}
-
+    <audio src="" autoplay controls id='example'></audio>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script>
 
-        // const url = '/story/getStoryDetail/64cdfb09d8e0e93498033222';
-        const url = "http://140.134.37.23:8000/story/getStoryDetail/64ce58ed2f6ef1ad74002243";
-        // const url = '/story/getAllStoryInfo';
+        // const url = "http://140.134.37.23:8000/story/getStoryDetail/64ce58ed2f6ef1ad74002243";
+        // const url = "http://140.134.37.23:8000/story/getAllStoryInfo";
+        // const url = 'api/story/getAllStoryInfo';
+        // const url = 'api/story/getStoryDetail/64ce8c1b3eb7b565c000afa2'
+        const url = 'api/story/audio/LittleRidingHood/13';
 
         function post(){
             $.ajax({
                 url: url,
                 method: 'GET',
                 success: function(data) {
-
+                    console.log(data)
+                    $('#example').attr("src", data);
                 }
             });
         }

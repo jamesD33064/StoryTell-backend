@@ -32,7 +32,7 @@ class StoryContentSeeder extends Seeder
         ];
 
         // 初始化編號計數器和情緒屬性
-        $sentenceNumber = 1;
+        $sentenceNumber = 0;
         $emotions = ['2849', '900', '700', '434', '1500', '2600', '1100, 2077'];
 
         // 建立一個空陣列來儲存帶有編號和情緒屬性的故事內容

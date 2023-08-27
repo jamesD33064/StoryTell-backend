@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\StoryContent;
 
-class StoryContentRepository {
+class StoryContentRepository
+{
     private $storyContent;
 
     public function __construct()

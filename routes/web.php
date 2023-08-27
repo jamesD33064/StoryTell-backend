@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StreamAudioController;
 use App\Http\Controllers\StoryContentController;
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/streamAudio', [StreamAudioController::class, 'streamAudio']);
-
 # 故事相關內容
-Route::prefix('story')->group(function () {
-    Route::get('/getAllStoryInfo', [StoryContentController::class, 'getAllStoryInfo']);
-    Route::get('/getStoryDetail/{storyId}', [StoryContentController::class, 'getStoryDetail']);
-});
+// Route::prefix('story')->group(function () {
+//     Route::get('/getAllStoryInfo', [StoryContentController::class, 'getAllStoryInfo']);
+//     Route::get('/getStoryDetail/{storyId}', [StoryContentController::class, 'getStoryDetail']);
+// });
