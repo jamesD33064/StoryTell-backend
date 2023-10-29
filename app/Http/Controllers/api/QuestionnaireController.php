@@ -30,6 +30,10 @@ class QuestionnaireController extends Controller
         //     'answer' => 'required',
         // ]);
 
+        // foreach($request->answer as $q){
+        //     if()
+        // }
+
         // if ($validator->fails()) {
         //     return response()->json(['errors' => $validator->errors()], 422);
         // }

@@ -17,7 +17,16 @@ class QuestionnaireService
 
     public function storeAnswer($answer)
     {
-        return $answer;
-        // return $this->questionnaireRecord->getStoryAudio($answer, $id);
+        // foreach($answer as $q){
+            
+        // }
+        $result = $this->questionnaireRecord->fill([
+                "Q1" => $answer['Q1'],
+                "Q2" => $answer['Q2'],
+                "Q3" => $answer['Q3'],
+            ])->save();
+
+        return response()->json(['result' => $result, 'answer' => $answer]);
+        // return $this->questionnaireRecord->($answer, $id);
     }
 }
