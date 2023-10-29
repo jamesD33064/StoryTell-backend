@@ -8,9 +8,11 @@ class StoryContentService
 {
     private $storyContentRepository;
 
-    public function __construct()
+    public function __construct(
+        StoryContentRepository $storyContentRepository
+    )
     {
-        $this->storyContentRepository = new StoryContentRepository();
+        $this->storyContentRepository = $storyContentRepository;
     }
 
     public function getAllStoryInfo(){

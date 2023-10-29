@@ -10,9 +10,11 @@ class StoryContentController extends Controller
 {
     private $storyContentService;
 
-    public function __construct()
+    public function __construct(
+        StoryContentService $storyContentService,
+    )
     {
-        $this->storyContentService = new StoryContentService();
+        $this->storyContentService = $storyContentService;
     }
 
     public function getAllStoryInfo(){

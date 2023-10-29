@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoryContentController;
 use App\Http\Controllers\api\StoryAudioController;
-
+use App\Http\Controllers\api\QuestionnaireController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +30,6 @@ Route::prefix('story')->group(function () {
         Route::get('{storyName}/{id}', [StoryAudioController::class, 'index']);
     });
 });
+
+// 問卷相關
+Route::post('uploadSurvery', [QuestionnaireController::class, 'index']);

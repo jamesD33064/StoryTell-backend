@@ -8,9 +8,11 @@ class StoryAudioService
 {
     private $storyAudioRepository;
 
-    public function __construct()
+    public function __construct(
+        StoryAudioRepository $storyAudioRepository
+    )
     {
-        $this->storyAudioRepository = new StoryAudioRepository();
+        $this->storyAudioRepository = $storyAudioRepository;
     }
 
     public function getStoryAudio($storyName, $id)
