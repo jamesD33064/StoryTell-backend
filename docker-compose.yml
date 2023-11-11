@@ -10,6 +10,9 @@ services:
       - .:/var/www/html
     depends_on:
       - database
+    networks:
+      - web
+
   database:
     image: mongo
     restart: always
@@ -17,5 +20,24 @@ services:
       - 27017:27017
     volumes:
       - mongo_data:/data/db
+
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/nginx.conf
+      # - C:\Certbot\live\emotionalstory.ddns.net:/etc/nginx/certs
+      - ./emotionalstory.ddns.net:/etc/nginx/certs
+    depends_on:
+      - app
+    networks:
+      - web
+
 volumes:
   mongo_data:
+networks:
+  web:

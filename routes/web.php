@@ -14,8 +14,12 @@ use App\Http\Controllers\StoryContentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    echo '404';
 });
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+// Route::get('/', [StoryContentController::class, 'getAllStoryInfo']);
 
 # 故事相關內容
 // Route::prefix('story')->group(function () {

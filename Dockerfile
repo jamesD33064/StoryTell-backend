@@ -26,6 +26,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # 設定權限
 RUN chown -R www-data:www-data /var/www/html
 
-# php artisan key:generate
-
 CMD php artisan serve --host=0.0.0.0 --port=8000
