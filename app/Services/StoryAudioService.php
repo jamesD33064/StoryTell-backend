@@ -15,8 +15,8 @@ class StoryAudioService
         $this->storyAudioRepository = $storyAudioRepository;
     }
 
-    public function getStoryAudio($storyName, $id)
+    public function getStoryAudio($storyName, $lang, $speaker, $emotion, $id)
     {
-        return $this->storyAudioRepository->getStoryAudio($storyName, $id);
+        return $this->storyAudioRepository->getStoryAudio($storyName, $lang, $speaker, $emotion, $id);
     }
 }

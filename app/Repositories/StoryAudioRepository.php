@@ -12,11 +12,17 @@ class StoryAudioRepository {
         $this->storyAudio = new StoryAudio();
     }
 
-    public function getStoryAudio($storyName, $id)
+    public function getStoryAudio($storyName, $lang, $speaker, $emotion, $id)
     {
-        // return $this->storyAudio;
-        $id = str_pad($id, 3, '0', STR_PAD_LEFT);
-        return '/wav/'.$storyName.'/output_'.$id.'.wav';
+        // $pathToFile = 'D:\StoryTell-backend\public\wav\\';
+        $pathToFile = '/var/www/html/public/wav/';
+        $pathToFile .= $storyName . '/';
+        $pathToFile .= $lang . '/';
+        $pathToFile .= $speaker . '/';
+        $pathToFile .= $emotion . '/';
+        $pathToFile .= $id . '.wav';
+
+        return response()->file($pathToFile);
     }
 }
 

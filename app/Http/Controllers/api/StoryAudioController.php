@@ -23,18 +23,20 @@ class StoryAudioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($storyName, $id)
+    public function index($storyName, $lang, $speaker, $emotion, $id)
     {
-        $validator = Validator::make(compact('storyName', 'id'), [
+        $validator = Validator::make(compact('storyName', 'lang', 'speaker', 'emotion', 'id'), [
             'storyName' => 'required',
+            'lang' => 'required',
+            'speaker' => 'required',
+            'emotion' => 'required',
             'id' => 'required|numeric',
         ]);
-
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        return $this->storyAudioService->getStoryAudio($storyName, $id);
+        return $this->storyAudioService->getStoryAudio($storyName, $lang, $speaker, $emotion, $id);
     }
 
     /**

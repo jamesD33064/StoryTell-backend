@@ -27,7 +27,7 @@ Route::prefix('story')->group(function () {
     Route::get('/getStoryDetail/{storyId}', [StoryContentController::class, 'getStoryDetail']);
 
     Route::prefix('audio')->group(function () {
-        Route::get('{storyName}/{id}', [StoryAudioController::class, 'index']);
+        Route::get('{storyName}/{lang}/{speaker}/{emotion}/{id}', [StoryAudioController::class, 'index']);
     });
 });
 
