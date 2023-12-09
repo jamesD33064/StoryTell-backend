@@ -26,7 +26,7 @@ class StoryContentRepository
     public function createStoryContent($storyName, $storyImg, $storyLang, $storyContent){
         $result = $this->storyContent->fill([
             "storyName" => $storyName,
-            "storyImg" => "",
+            "storyImg" => $storyImg,
             "storyLang" => $storyLang,
             "storyContent" => $storyContent,
         ])->save();

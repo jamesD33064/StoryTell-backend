@@ -19,3 +19,6 @@ yarn-error.log
 /vendor
 *.pem
 *.wav
+public/wav/LittleRedRidingHood/C/LittleRedRidingHood.csv
+public/wav/LittleRedRidingHood/C/Default/pred_all/pred_all.rar
+public/wav/LittleRedRidingHood/J/LittleRedRidingHood.csv

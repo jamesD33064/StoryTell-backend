@@ -23,7 +23,7 @@ class UploadStoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function uploadStoryByCSVFile(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'storyContent' => 'required',
@@ -36,6 +36,23 @@ class UploadStoryController extends Controller
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        return $this->storyContentService->createStoryContent($request);
+        return $this->storyContentService->createStoryContentByCSVFile($request);
+    }
+
+    public function uploadStoryWithString(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'storyContent' => 'required',
+            'storyImg' => 'required',
+            'storyName' => 'required',
+            'storyLang' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        // return $this->storyContentService->splitSentences($request);
+        return $this->storyContentService->createStoryContentByString($request);
     }
 }

@@ -29,7 +29,8 @@ Route::prefix('story')->group(function () {
     // 取得單一故事內容
     Route::get('/getStoryDetail/{storyId}', [StoryContentController::class, 'getStoryDetail']);
     // 上傳故事
-    Route::post('uploadStoryWithCsv', [UploadStoryController::class, 'index']);
+    Route::post('uploadStoryWithCsv', [UploadStoryController::class, 'uploadStoryByCSVFile']);
+    Route::post('uploadStoryWithString', [UploadStoryController::class, 'uploadStoryWithString']);
 
     Route::prefix('audio')->group(function () {
         Route::get('{storyName}/{lang}/{speaker}/{emotion}/{id}', [StoryAudioController::class, 'index']);
