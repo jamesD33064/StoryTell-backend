@@ -15,6 +15,7 @@ class UploadStory
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $storyId;
+    public $storyLang;
     public $storyContent;
 
     /**
@@ -22,9 +23,10 @@ class UploadStory
      *
      * @return void
      */
-    public function __construct($storyId, $storyContent)
+    public function __construct($storyId, $storyLang, $storyContent)
     {
         $this->storyId = $storyId;
+        $this->storyLang = $storyLang;
         $this->storyContent = $storyContent;
     }
 

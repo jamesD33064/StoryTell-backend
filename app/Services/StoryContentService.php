@@ -70,7 +70,6 @@ class StoryContentService
 
     public function createStoryContentByString($parameter)
     {
-        // $url ="'http://host.docker.internal:5000/split_sentences";
         $splited = [];
         $storyContent = $parameter['storyContent'];
         $storyLang = $parameter['storyLang'];

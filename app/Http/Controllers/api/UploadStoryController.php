@@ -57,8 +57,8 @@ class UploadStoryController extends Controller
 
         if ($storyId) {
             // event(new UploadStory($storyId, $request->storyContent));
-            Log::info("[UploadStoryController]生成語音:" . json_encode([$storyId, $request->storyContent]));
-            UploadStory::dispatch($storyId, $request->storyContent);
+            Log::info("[UploadStoryController]生成語音:" . json_encode([$storyId, $request->storyLang, $request->storyContent]));
+            UploadStory::dispatch($storyId, $request->storyLang, $request->storyContent);
         }
 
         return response()->json(['retMsg' => '成功'], 200);

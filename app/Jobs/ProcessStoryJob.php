@@ -17,6 +17,7 @@ class ProcessStoryJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $storyId;
+    public $storyLang;
     public $storyContent;
 
     /**
@@ -24,10 +25,13 @@ class ProcessStoryJob implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($storyId, $storyContent)
+    public function __construct($storyId, $storyLang, $storyContent)
     {
         $this->storyId = $storyId;
+        $this->storyLang = $storyLang;
         $this->storyContent = $storyContent;
+        Log::info("[ProcessStoryJob]生成語音:" . json_encode([$this->storyId, $this->storyLang, $this->storyContent]));
+        Log::info("[ProcessStoryJob]生成語音:" . $this->storyLang);
     }
 
     /**
@@ -37,10 +41,11 @@ class ProcessStoryJob implements ShouldQueue
      */
     public function handle()
     {
-        Log::info("[ProcessStoryJob]生成語音:" . json_encode([$this->storyId, $this->storyContent]));
+        // $port = $this->storyLang == "C" ? "5000" : "5001";
 
         $client = new Client([
-            'base_uri' => 'http://host.docker.internal:5000',
+            'base_uri' => 'http://host.docker.internal:5001',
+            // 'base_uri' => 'http://host.docker.internal:' . $port,
             'defaults' => [
                 'exceptions' => false
             ]
@@ -58,8 +63,7 @@ class ProcessStoryJob implements ShouldQueue
             $splited = json_decode($splited);
         } catch (RequestException $e) {
             if ($e->hasResponse()) {
-                echo $e->getResponse()->getBody();
-                Log::info($this->storyId . 'gen_story成功');
+                Log::info($this->storyId . 'gen_story成功' . $e->getResponse()->getBody());
             } else {
                 Log::error('gen_story請求失敗：' . $e->getMessage() . json_encode([
                     'storyId' => $this->storyId,
