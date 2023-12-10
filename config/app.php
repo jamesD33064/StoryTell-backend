@@ -185,6 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
+        // MongoDB\Laravel\MongoDBQueueServiceProvider::class,
 
         /*
          * Application Service Providers...

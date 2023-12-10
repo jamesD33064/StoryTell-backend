@@ -39,7 +39,7 @@ return [
             'driver' => 'mongodb',
             'host' => env('DB_HOST', 'database'),
             'port' => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE', 'storytell'),
+            'database' => env('DB_DATABASE', 'StoryTell'),
             // 'username' => env('DB_USERNAME', 'root'),
             // 'password' => env('DB_PASSWORD', 'root'),
         ],

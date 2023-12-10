@@ -37,6 +37,8 @@ class ProcessStoryJob implements ShouldQueue
      */
     public function handle()
     {
+        Log::info("[ProcessStoryJob]生成語音:" . json_encode([$this->storyId, $this->storyContent]));
+
         $client = new Client([
             'base_uri' => 'http://host.docker.internal:5000',
             'defaults' => [

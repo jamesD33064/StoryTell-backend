@@ -29,7 +29,9 @@ class GenPredictEmotionAudio
     public function handle(UploadStory $event)
     {
         try {
+            Log::info("[GenPredictEmotionAudio][start]生成語音:" . json_encode([$event->storyId, $event->storyContent]));
             dispatch(new ProcessStoryJob($event->storyId, $event->storyContent));
+            Log::info("[GenPredictEmotionAudio][finish]生成語音:" . json_encode([$event->storyId, $event->storyContent]));
         } catch (\Exception $e) {
             Log::error('Error dispatching ProcessStoryJob: ' . $e->getMessage());
         }
