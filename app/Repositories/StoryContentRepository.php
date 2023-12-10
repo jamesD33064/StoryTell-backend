@@ -13,17 +13,20 @@ class StoryContentRepository
         $this->storyContent = new StoryContent();
     }
 
-    public function getAllStoryInfo(){
+    public function getAllStoryInfo()
+    {
         $data = $this->storyContent::select('_id', 'storyName', 'storyImg')->get();
 
         return json_encode($data);
     }
 
-    public function getStoryContent($storyId){
+    public function getStoryContent($storyId)
+    {
         return $this->storyContent::find($storyId);
     }
 
-    public function createStoryContent($storyName, $storyImg, $storyLang, $storyContent){
+    public function createStoryContent($storyName, $storyImg, $storyLang, $storyContent)
+    {
         $result = $this->storyContent->fill([
             "storyName" => $storyName,
             "storyImg" => $storyImg,
@@ -31,7 +34,8 @@ class StoryContentRepository
             "storyContent" => $storyContent,
         ])->save();
 
-        return $result;
+        // $responseData = json_encode(['id' => $this->storyContent->id]);
+
+        return $this->storyContent->id;
     }
 }
-

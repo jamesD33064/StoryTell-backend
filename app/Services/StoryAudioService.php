@@ -19,4 +19,6 @@ class StoryAudioService
     {
         return $this->storyAudioRepository->getStoryAudio($storyName, $lang, $speaker, $emotion, $id);
     }
+
+    // public function genPredict
 }
