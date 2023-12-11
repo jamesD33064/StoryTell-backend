@@ -30,8 +30,8 @@ class ProcessStoryJob implements ShouldQueue
         $this->storyId = $storyId;
         $this->storyLang = $storyLang;
         $this->storyContent = $storyContent;
-        Log::info("[ProcessStoryJob]生成語音:" . json_encode([$this->storyId, $this->storyLang, $this->storyContent]));
-        Log::info("[ProcessStoryJob]生成語音:" . $this->storyLang);
+        Log::info("[ProcessStoryJob][1]生成語音:" . json_encode([$this->storyId, $this->storyLang, $this->storyContent]));
+        Log::info("[ProcessStoryJob][2]生成語音:" . $this->storyLang);
     }
 
     /**
@@ -41,17 +41,17 @@ class ProcessStoryJob implements ShouldQueue
      */
     public function handle()
     {
-        // $port = $this->storyLang == "C" ? "5000" : "5001";
-
-        $client = new Client([
-            'base_uri' => 'http://host.docker.internal:5001',
-            // 'base_uri' => 'http://host.docker.internal:' . $port,
-            'defaults' => [
-                'exceptions' => false
-            ]
-        ]);
+        $port = $this->storyLang == "C" ? "5000" : "5001";
 
         try {
+            $client = new Client([
+                // 'base_uri' => 'http://host.docker.internal:5001',
+                'base_uri' => 'http://host.docker.internal:' . $port,
+                'defaults' => [
+                    'exceptions' => false
+                ]
+            ]);
+
             $response = $client->post('/gen_story', [
                 'json' => [
                     'storyId' => $this->storyId,

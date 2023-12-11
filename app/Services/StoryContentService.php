@@ -18,12 +18,12 @@ class StoryContentService
     ) {
         $this->storyContentRepository = $storyContentRepository;
         // $this->client = $client;
-        $this->client = new Client([
-            'base_uri' => 'http://host.docker.internal:5000',
-            'defaults' => [
-                'exceptions' => false
-            ]
-        ]);
+        // $this->client = new Client([
+        //     'base_uri' => 'http://host.docker.internal:5000',
+        //     'defaults' => [
+        //         'exceptions' => false
+        //     ]
+        // ]);
     }
 
     public function getAllStoryInfo()
@@ -73,8 +73,17 @@ class StoryContentService
         $splited = [];
         $storyContent = $parameter['storyContent'];
         $storyLang = $parameter['storyLang'];
-        try {
-            $response = $this->client->post('/split_sentences', [
+        try {        
+            $port = $storyLang == "C" ? "5000" : "5001";
+
+            $client = new Client([
+                'base_uri' => 'http://host.docker.internal:' . $port,
+                'defaults' => [
+                    'exceptions' => false
+                ]
+            ]);
+
+            $response = $client->post('/split_sentences', [
                 'json' => [
                     'storyContent' => $storyContent,
                     'storyLang' => $storyLang,
