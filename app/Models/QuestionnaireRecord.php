@@ -10,5 +10,5 @@ class QuestionnaireRecord extends Model
     use HasFactory;
     protected $connection = 'mongodb';
     protected $collection = 'questionnaireRecord';
-    protected $fillable = ['Q1', 'Q2', 'Q3'];
+    protected $fillable = ['Q1', 'Q2', 'Q3', 'Q4', 'Q5'];
 }

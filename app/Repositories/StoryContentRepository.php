@@ -15,7 +15,7 @@ class StoryContentRepository
 
     public function getAllStoryInfo()
     {
-        $data = $this->storyContent::select('_id', 'storyName', 'storyImg')->get();
+        $data = $this->storyContent::select('_id', 'storyName', 'storyImg', 'storyLang', 'isUpload')->get();
 
         return json_encode($data);
     }
@@ -25,13 +25,14 @@ class StoryContentRepository
         return $this->storyContent::find($storyId);
     }
 
-    public function createStoryContent($storyName, $storyImg, $storyLang, $storyContent)
+    public function createStoryContent($storyName, $storyImg, $storyLang, $storyContent, $isUpload)
     {
         $result = $this->storyContent->fill([
             "storyName" => $storyName,
             "storyImg" => $storyImg,
             "storyLang" => $storyLang,
             "storyContent" => $storyContent,
+            "isUpload" => $isUpload,
         ])->save();
 
         // $responseData = json_encode(['id' => $this->storyContent->id]);

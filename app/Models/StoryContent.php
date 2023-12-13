@@ -10,6 +10,5 @@ class StoryContent extends Model
     use HasFactory;
     protected $connection = 'mongodb';
     protected $collection = 'storyContent';
-    protected $fillable = ['storyName', 'storyImg', 'storyLang', 'storyContent'];
-
+    protected $fillable = ['storyName', 'storyImg', 'storyLang', 'storyContent', "isUpload"];
 }

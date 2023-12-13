@@ -63,7 +63,7 @@ class StoryContentService
             ];
         }
 
-        $result = $this->storyContentRepository->createStoryContent($parameter['storyName'], $parameter['storyImg'], $parameter['storyLang'], $storyContent);
+        $result = $this->storyContentRepository->createStoryContent($parameter['storyName'], $parameter['storyImg'], $parameter['storyLang'], $storyContent, false);
 
         return json_encode($result);
     }
@@ -112,7 +112,7 @@ class StoryContentService
             ];
         }
 
-        $storyId = $this->storyContentRepository->createStoryContent($parameter['storyName'], $parameter['storyImg'], $parameter['storyLang'], $storyContent);
+        $storyId = $this->storyContentRepository->createStoryContent($parameter['storyName'], $parameter['storyImg'], $parameter['storyLang'], $storyContent, true);
 
         return $storyId;
     }

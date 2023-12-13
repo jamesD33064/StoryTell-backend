@@ -26,19 +26,14 @@ class QuestionnaireController extends Controller
      */
     public function index(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'answer' => 'required',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'answer' => 'required',
+        ]);
 
-        // foreach($request->answer as $q){
-        //     if()
-        // }
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
-        // if ($validator->fails()) {
-        //     return response()->json(['errors' => $validator->errors()], 422);
-        // }
-
-        // return $this->questionnaireService->storeAnswer($validator['answer']);
         return $this->questionnaireService->storeAnswer($request->answer);
     }
 }
